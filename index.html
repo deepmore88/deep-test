@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Add / Remove Table Rows Dynamically</title>
+<style type="text/css">
+    form{margin: 20px 0;}
+    form input, button{padding: 5px;}
+    table{margin-bottom: 20px;border-collapse: collapse;width:33%;}
+    table, th, td{border: 1px solid #cdcdcd;}
+    table th, table td{padding: 10px;text-align: left;}
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".add-row").click(function(){
+            var fname = $("#fname").val();
+            var lname = $("#lname").val();
+			var phone = $("#phone").val();
+            var markup = "<tr><td>" + fname + "</td><td>" + lname + "</td><td>" + phone + "</td><td><button type='button' class='delete-row'>Delete Record</button></td></tr>";
+            $("table tbody").append(markup);
+        });
+        
+        // Find and remove selected table rows
+        
+            $("table button.delete-row").on('click',function () {
+            	  $(this).parents("tr").remove();
+        });
+		
+            //$("table .delete-row").each(function(){
+//           	$(this).click(function(){
+//                   $(this).parents("tr").remove();
+//          });
+//        });
+    });    
+</script>
+</head>
+<body>
+    <form>
+        <input type="text" id="fname" placeholder="First Name">
+        <input type="text" id="lname" placeholder="Last Name">
+        <input type="text" id="phone" placeholder="Phone Number">
+    	<input type="button" class="add-row" value="Add Record">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Deep</td>
+                <td>More</td>
+                <td>0988888888</td>
+                <td><button type="button" class="delete-row">Delete Record</button></td>
+            </tr>
+        </tbody>
+    </table>
+</body> 
+</html>                                		
